@@ -1,27 +1,29 @@
 import express from 'express'
 import cors from 'cors'
-import { MongoClient } from 'mongodb'
-import { MONGO_URI } from './mongo_uri.js'
-
-const client = new MongoClient(MONGO_URI)
-const db = client.db('school') // db name
-const students = db.collection('students') // collection
-const teachers = db.collection('teachers') // collection
+import { addNewStudent, getAllStudents, updateStudent, deleteStudent } from './collections/students.js'
+import { getAllTeachers, addNewTeacher, updateTeacher, deleteTeacher } from './collections/teachers.js'
+import { getAllParents, addNewParent, updateParent, deleteParent } from './collections/parents.js'
 
 const app = express()
 app.use(cors()) // so browser could interact with API
 app.use(express.json()) // API could receive JSON data [{},{},{}]
 
-app.get('/students', async (req, res) => {
-	const allStudents = await students.find().toArray()
-	res.send(allStudents)
-})
+// all student ROUTES
+app.get('/students', getAllStudents)
+app.post('/students', addNewStudent)
+app.put('/students', updateStudent)
+app.delete('/students', deleteStudent)
 
-app.post('/students', async (req, res) => {
-	// this request takes time this is an asynchronous request
-	const newStudent = await students.insertOne({ type: 'student', name: 'Margarita Armas', grade: 11, registered: true })
+// all teachers ROUTES
+app.get('/teachers', getAllTeachers)
+app.post('/teachers', addNewTeacher)
+app.put('/teachers', updateTeacher)
+app.delete('/teachers', deleteTeacher)
 
-	res.send(newStudent)
-})
+// all parents ROUTES
+app.get('/parents', getAllParents)
+app.post('/parents', addNewParent)
+app.put('/parents', updateParent)
+app.delete('/parents', deleteParent)
 
 app.listen(4000, () => console.log('my API is running 😎'))

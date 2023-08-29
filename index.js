@@ -5,8 +5,6 @@ import { getAllTeachers, addNewTeacher, updateTeacher, deleteTeacher } from './c
 import { getAllParents, addNewParent, updateParent, deleteParent } from './collections/parents.js'
 import 'dotenv/config'
 
-const PORT = parseInt(process.env.PORT) || 8080
-
 const app = express()
 app.use(cors()) // so browser could interact with API
 app.use(express.json()) // API could receive JSON data [{},{},{}]

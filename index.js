@@ -14,10 +14,6 @@ app.listen(port, () => {
   console.log('Hello world listening on port', port);
 });
 
-app.get('/', async (req, res) => {
-	res.send('api running here')
-})
-
 // all student ROUTES
 app.get('/students', getAllStudents)
 app.post('/students', addNewStudent)

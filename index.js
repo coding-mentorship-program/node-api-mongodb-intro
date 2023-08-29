@@ -3,6 +3,9 @@ import cors from 'cors'
 import { addNewStudent, getAllStudents, updateStudent, deleteStudent } from './collections/students.js'
 import { getAllTeachers, addNewTeacher, updateTeacher, deleteTeacher } from './collections/teachers.js'
 import { getAllParents, addNewParent, updateParent, deleteParent } from './collections/parents.js'
+import 'dotenv/config'
+
+const PORT = process.env.PORT
 
 const app = express()
 app.use(cors()) // so browser could interact with API
@@ -26,6 +29,5 @@ app.post('/parents', addNewParent)
 app.put('/parents', updateParent)
 app.delete('/parents', deleteParent)
 
-const PORT = 4040
 
 app.listen(PORT, () => console.log('my API is running 😎'))

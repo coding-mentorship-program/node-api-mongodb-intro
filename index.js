@@ -26,4 +26,6 @@ app.post('/parents', addNewParent)
 app.put('/parents', updateParent)
 app.delete('/parents', deleteParent)
 
-app.listen(4000, () => console.log('my API is running 😎'))
+const PORT = 4040
+
+app.listen(PORT, () => console.log('my API is running 😎'))

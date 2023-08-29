@@ -1,5 +1,5 @@
 import { MongoClient } from 'mongodb'
-import { MONGO_URI } from './mongo_uri.js'
+import 'dotenv/config'
 
-const client = new MongoClient(MONGO_URI)
+const client = new MongoClient(process.env.MONGO_URI)
 export const db = client.db('school') // db name

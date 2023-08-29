@@ -11,6 +11,10 @@ const app = express()
 app.use(cors()) // so browser could interact with API
 app.use(express.json()) // API could receive JSON data [{},{},{}]
 
+app.get('/', async (req, res) => {
+	res.send('api running here')
+})
+
 // all student ROUTES
 app.get('/students', getAllStudents)
 app.post('/students', addNewStudent)
@@ -29,4 +33,4 @@ app.post('/parents', addNewParent)
 app.put('/parents', updateParent)
 app.delete('/parents', deleteParent)
 
-app.listen(PORT, () => console.log('my API is running 😎'))
+app.listen(PORT, () => console.log('my API is running 😎 on', PORT))
